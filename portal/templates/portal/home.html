@@ -1,0 +1,97 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 mb-4">Historias Clínicas Electrónicas y Telemedicina seguras</h1>
+                <p class="lead mb-4">Transformamos la atención médica con tecnología segura y accesible.</p>
+                <a href="{% url 'features' %}" class="btn btn-light btn-lg me-3">
+                    <i class="fas fa-info-circle me-2"></i>Conoce más
+                </a>
+                <a href="{% url 'security' %}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-shield-alt me-2"></i>Seguridad
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/hero-image.svg' %}" alt="Telemedicina" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-laptop-medical feature-icon"></i>
+                    <h3 class="card-title">Plataforma HCE</h3>
+                    <p class="card-text">Historias clínicas electrónicas seguras en la nube con acceso desde cualquier dispositivo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h3 class="card-title">App Móvil</h3>
+                    <p class="card-text">Consultas médicas seguras a través de nuestra aplicación de telemedicina.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3 class="card-title">Análisis Avanzado</h3>
+                    <p class="card-text">Reportes detallados y análisis de datos clínicos para mejor toma de decisiones.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="container my-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="mb-4">¿Por qué elegir MediData Health?</h2>
+            <ul class="features-list">
+                <li>Plataforma HCE en la nube con máxima seguridad</li>
+                <li>App móvil intuitiva para telemedicina</li>
+                <li>Integración con sistemas de facturación</li>
+                <li>Análisis y reportes clínicos avanzados</li>
+                <li>Soporte técnico 24/7</li>
+                <li>Cumplimiento con normativas de salud</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <div class="card contact-form">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Contacta con nosotros</h3>
+                    <form method="post" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

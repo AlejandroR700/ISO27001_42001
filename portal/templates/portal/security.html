@@ -1,0 +1,113 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 mb-4">Seguridad y Cumplimiento ISO 27001</h1>
+                <p class="lead">Comprometidos con los más altos estándares de seguridad en el manejo de información médica</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Controls Section -->
+<section class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4">
+                <i class="fas fa-shield-alt text-primary me-2"></i>
+                Controles de Seguridad
+            </h2>
+            <p class="text-muted mb-4">Implementamos los controles de seguridad establecidos por ISO 27001 para garantizar la protección de su información.</p>
+            
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr class="bg-light">
+                            <th scope="col" class="text-center" width="10%">ID</th>
+                            <th scope="col" width="30%">Control</th>
+                            <th scope="col" width="60%">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if controls %}
+                            {% for c in controls %}
+                            <tr>
+                                <td class="text-center"><strong>{{ c.control_id }}</strong></td>
+                                <td><strong>{{ c.title }}</strong></td>
+                                <td>{{ c.description|default:"-" }}</td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="3" class="text-center py-4">
+                                    <i class="fas fa-info-circle text-info me-2"></i>
+                                    No hay controles registrados en este momento.
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Risks Section -->
+<section class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4">
+                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                Gestión de Riesgos
+            </h2>
+            <p class="text-muted mb-4">Identificamos y gestionamos proactivamente los riesgos potenciales para garantizar la seguridad de la información.</p>
+            
+            <div class="row">
+                {% for r in risks %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-tasks text-primary me-2"></i>
+                                {{ r.name }}
+                            </h5>
+                            {% if r.description %}
+                            <p class="card-text text-muted">{{ r.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle me-2"></i>
+                        No hay riesgos registrados en este momento.
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="text-center p-5 bg-light rounded-3">
+                <h2 class="mb-4">¿Necesitas más información sobre nuestra seguridad?</h2>
+                <p class="lead mb-4">Contáctanos para obtener detalles sobre nuestras certificaciones y medidas de seguridad.</p>
+                <a href="{% url 'home' %}#contacto" class="btn btn-primary btn-lg">
+                    <i class="fas fa-envelope me-2"></i>
+                    Contactar
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

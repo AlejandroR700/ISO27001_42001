@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="Healthcare" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Background" fill="#3498db" cx="400" cy="300" r="250"/>
+        <path d="M400,150 L400,450 M250,300 L550,300" id="Cross" stroke="#FFFFFF" stroke-width="40" stroke-linecap="round"/>
+    </g>
+</svg>
